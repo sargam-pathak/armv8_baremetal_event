@@ -1,0 +1,158 @@
+
+kernel.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <g_pfnVectors>:
+   0:	00 00 01 20 41 00 00 00 4d 00 00 00 4d 00 00 00     ... A...M...M...
+	...
+  2c:	4d 00 00 00 00 00 00 00 00 00 00 00 4d 00 00 00     M...........M...
+  3c:	61 00 00 00                                         a...
+
+00000040 <Reset_Handler>:
+  40:	b580      	push	{r7, lr}
+  42:	af00      	add	r7, sp, #0
+  44:	f000 f812 	bl	6c <main>
+  48:	bf00      	nop
+  4a:	e7fd      	b.n	48 <Reset_Handler+0x8>
+
+0000004c <Default_Handler>:
+  4c:	b480      	push	{r7}
+  4e:	af00      	add	r7, sp, #0
+  50:	bf00      	nop
+  52:	e7fd      	b.n	50 <Default_Handler+0x4>
+
+00000054 <MPU_Config>:
+  54:	b480      	push	{r7}
+  56:	af00      	add	r7, sp, #0
+  58:	bf00      	nop
+  5a:	46bd      	mov	sp, r7
+  5c:	bc80      	pop	{r7}
+  5e:	4770      	bx	lr
+
+00000060 <SysTick_Handler>:
+  60:	b480      	push	{r7}
+  62:	af00      	add	r7, sp, #0
+  64:	bf00      	nop
+  66:	46bd      	mov	sp, r7
+  68:	bc80      	pop	{r7}
+  6a:	4770      	bx	lr
+
+0000006c <main>:
+  6c:	b480      	push	{r7}
+  6e:	af00      	add	r7, sp, #0
+  70:	bf00      	nop
+  72:	e7fd      	b.n	70 <main+0x4>
+
+00000074 <_write>:
+  74:	b480      	push	{r7}
+  76:	b085      	sub	sp, #20
+  78:	af00      	add	r7, sp, #0
+  7a:	60f8      	str	r0, [r7, #12]
+  7c:	60b9      	str	r1, [r7, #8]
+  7e:	607a      	str	r2, [r7, #4]
+  80:	687b      	ldr	r3, [r7, #4]
+  82:	4618      	mov	r0, r3
+  84:	3714      	adds	r7, #20
+  86:	46bd      	mov	sp, r7
+  88:	bc80      	pop	{r7}
+  8a:	4770      	bx	lr
+
+0000008c <_read>:
+  8c:	b480      	push	{r7}
+  8e:	b085      	sub	sp, #20
+  90:	af00      	add	r7, sp, #0
+  92:	60f8      	str	r0, [r7, #12]
+  94:	60b9      	str	r1, [r7, #8]
+  96:	607a      	str	r2, [r7, #4]
+  98:	2300      	movs	r3, #0
+  9a:	4618      	mov	r0, r3
+  9c:	3714      	adds	r7, #20
+  9e:	46bd      	mov	sp, r7
+  a0:	bc80      	pop	{r7}
+  a2:	4770      	bx	lr
+
+000000a4 <_close>:
+  a4:	b480      	push	{r7}
+  a6:	b083      	sub	sp, #12
+  a8:	af00      	add	r7, sp, #0
+  aa:	6078      	str	r0, [r7, #4]
+  ac:	f04f 33ff 	mov.w	r3, #4294967295	@ 0xffffffff
+  b0:	4618      	mov	r0, r3
+  b2:	370c      	adds	r7, #12
+  b4:	46bd      	mov	sp, r7
+  b6:	bc80      	pop	{r7}
+  b8:	4770      	bx	lr
+
+000000ba <_lseek>:
+  ba:	b480      	push	{r7}
+  bc:	b085      	sub	sp, #20
+  be:	af00      	add	r7, sp, #0
+  c0:	60f8      	str	r0, [r7, #12]
+  c2:	60b9      	str	r1, [r7, #8]
+  c4:	607a      	str	r2, [r7, #4]
+  c6:	2300      	movs	r3, #0
+  c8:	4618      	mov	r0, r3
+  ca:	3714      	adds	r7, #20
+  cc:	46bd      	mov	sp, r7
+  ce:	bc80      	pop	{r7}
+  d0:	4770      	bx	lr
+
+000000d2 <_fstat>:
+  d2:	b480      	push	{r7}
+  d4:	b083      	sub	sp, #12
+  d6:	af00      	add	r7, sp, #0
+  d8:	6078      	str	r0, [r7, #4]
+  da:	6039      	str	r1, [r7, #0]
+  dc:	683b      	ldr	r3, [r7, #0]
+  de:	f44f 5200 	mov.w	r2, #8192	@ 0x2000
+  e2:	605a      	str	r2, [r3, #4]
+  e4:	2300      	movs	r3, #0
+  e6:	4618      	mov	r0, r3
+  e8:	370c      	adds	r7, #12
+  ea:	46bd      	mov	sp, r7
+  ec:	bc80      	pop	{r7}
+  ee:	4770      	bx	lr
+
+000000f0 <_isatty>:
+  f0:	b480      	push	{r7}
+  f2:	b083      	sub	sp, #12
+  f4:	af00      	add	r7, sp, #0
+  f6:	6078      	str	r0, [r7, #4]
+  f8:	2301      	movs	r3, #1
+  fa:	4618      	mov	r0, r3
+  fc:	370c      	adds	r7, #12
+  fe:	46bd      	mov	sp, r7
+ 100:	bc80      	pop	{r7}
+ 102:	4770      	bx	lr
+
+00000104 <_getpid>:
+ 104:	b480      	push	{r7}
+ 106:	af00      	add	r7, sp, #0
+ 108:	2301      	movs	r3, #1
+ 10a:	4618      	mov	r0, r3
+ 10c:	46bd      	mov	sp, r7
+ 10e:	bc80      	pop	{r7}
+ 110:	4770      	bx	lr
+
+00000112 <_kill>:
+ 112:	b480      	push	{r7}
+ 114:	b083      	sub	sp, #12
+ 116:	af00      	add	r7, sp, #0
+ 118:	6078      	str	r0, [r7, #4]
+ 11a:	6039      	str	r1, [r7, #0]
+ 11c:	f04f 33ff 	mov.w	r3, #4294967295	@ 0xffffffff
+ 120:	4618      	mov	r0, r3
+ 122:	370c      	adds	r7, #12
+ 124:	46bd      	mov	sp, r7
+ 126:	bc80      	pop	{r7}
+ 128:	4770      	bx	lr
+
+0000012a <_exit>:
+ 12a:	b480      	push	{r7}
+ 12c:	b083      	sub	sp, #12
+ 12e:	af00      	add	r7, sp, #0
+ 130:	6078      	str	r0, [r7, #4]
+ 132:	bf00      	nop
+ 134:	e7fd      	b.n	132 <_exit+0x8>
